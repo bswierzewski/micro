@@ -15,13 +15,7 @@ namespace Infrastructure.Data
         {
             base.OnConfiguring(optionsBuilder);
 
-            var currentDirectory = Environment.CurrentDirectory;
-
-            int endIndex = currentDirectory.IndexOf("Services");
-
-            var path = Path.Join(currentDirectory.Substring(0, endIndex), "Mocks", "Micro.db");
-
-            optionsBuilder.UseSqlite($"Data source={path}");
+            optionsBuilder.UseSqlite($"Data source=Micro.db");
         }
 
         public DbSet<Address> Addresses { get; set; }
