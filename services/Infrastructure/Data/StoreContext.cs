@@ -1,5 +1,8 @@
+using System;
+using System.IO;
 using Core.Entities;
 using Microsoft.EntityFrameworkCore;
+using Version = Core.Entities.Version;
 
 namespace Infrastructure.Data
 {
@@ -12,8 +15,15 @@ namespace Infrastructure.Data
         {
             base.OnConfiguring(optionsBuilder);
 
-            optionsBuilder.UseSqlite("Filename=Data.db");
+            var currentDirectory = Environment.CurrentDirectory;
+
+            int endIndex = currentDirectory.IndexOf("Services");
+
+            var path = Path.Join(currentDirectory.Substring(0, endIndex), "Mocks", "Micro.db");
+
+            optionsBuilder.UseSqlite($"Data source={path}");
         }
+
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Component> Components { get; set; }
