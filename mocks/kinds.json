@@ -1,0 +1,92 @@
+[
+  {
+    "name": "Orrin",
+    "icon": "fas fa-calendar-plus fa-fw",
+    "id": 1,
+    "created": "2021-05-02T10:00:02.380225+02:00",
+    "createdBy": 26,
+    "modified": "2021-05-02T00:47:21.8818855+02:00",
+    "modifiedBy": 65
+  },
+  {
+    "name": "Angie",
+    "icon": "fas fa-comment fa-fw",
+    "id": 2,
+    "created": "2021-05-01T12:28:29.6973805+02:00",
+    "createdBy": 23,
+    "modified": "2021-05-02T09:55:21.0111498+02:00",
+    "modifiedBy": 41
+  },
+  {
+    "name": "Eliezer",
+    "icon": "fas fa-chevron-circle-right fa-fw",
+    "id": 3,
+    "created": "2021-05-01T12:34:03.9474368+02:00",
+    "createdBy": 27,
+    "modified": "2021-05-02T08:15:38.773917+02:00",
+    "modifiedBy": 72
+  },
+  {
+    "name": "Brady",
+    "icon": "fas fa-calendar-plus fa-fw",
+    "id": 4,
+    "created": "2021-05-02T09:53:26.0006775+02:00",
+    "createdBy": 18,
+    "modified": "2021-05-02T09:52:00.8833365+02:00",
+    "modifiedBy": 51
+  },
+  {
+    "name": "Marjory",
+    "icon": "fas fa-arrows-alt-h fa-fw",
+    "id": 5,
+    "created": "2021-05-01T16:07:22.3932972+02:00",
+    "createdBy": 13,
+    "modified": "2021-05-01T22:10:29.0772279+02:00",
+    "modifiedBy": 84
+  },
+  {
+    "name": "Rebeka",
+    "icon": "fas fa-book fa-fw",
+    "id": 6,
+    "created": "2021-05-01T14:10:12.8305801+02:00",
+    "createdBy": 50,
+    "modified": "2021-05-02T02:13:15.7298704+02:00",
+    "modifiedBy": 12
+  },
+  {
+    "name": "Adelle",
+    "icon": "fas fa-caret-square-left fa-fw",
+    "id": 7,
+    "created": "2021-05-01T12:26:42.0315979+02:00",
+    "createdBy": 40,
+    "modified": "2021-05-02T02:28:48.2118401+02:00",
+    "modifiedBy": 28
+  },
+  {
+    "name": "Callie",
+    "icon": "fas fa-cloud-sun fa-fw",
+    "id": 8,
+    "created": "2021-05-01T18:44:24.9189456+02:00",
+    "createdBy": 91,
+    "modified": "2021-05-02T06:37:22.1870807+02:00",
+    "modifiedBy": 69
+  },
+  {
+    "name": "Brenda",
+    "icon": "fas fa-compact-disc fa-fw",
+    "id": 9,
+    "created": "2021-05-02T03:01:15.9452354+02:00",
+    "createdBy": 99,
+    "modified": "2021-05-01T12:45:11.6549553+02:00",
+    "modifiedBy": 47
+  },
+  {
+    "name": "Gudrun",
+    "icon": "fas fa-chart-pie fa-fw",
+    "id": 10,
+    "created": "2021-05-01T12:08:58.2062338+02:00",
+    "createdBy": 49,
+    "modified": "2021-05-01T13:31:10.9479383+02:00",
+    "modifiedBy": 9
+  }
+]

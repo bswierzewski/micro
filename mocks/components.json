@@ -1,0 +1,222 @@
+[
+  {
+    "name": "Hilton",
+    "icon": "fas fa-angle-down fa-fw",
+    "categoryId": 2,
+    "category": null,
+    "id": 1,
+    "created": "2021-05-01T18:48:31.4168947+02:00",
+    "createdBy": 2,
+    "modified": "2021-05-01T22:45:23.4473828+02:00",
+    "modifiedBy": 47
+  },
+  {
+    "name": "Danny",
+    "icon": "fas fa-bug fa-fw",
+    "categoryId": 3,
+    "category": null,
+    "id": 2,
+    "created": "2021-05-01T14:41:29.6012701+02:00",
+    "createdBy": 76,
+    "modified": "2021-05-01T20:38:07.7735737+02:00",
+    "modifiedBy": 19
+  },
+  {
+    "name": "Monica",
+    "icon": "fas fa-atlas fa-fw",
+    "categoryId": 7,
+    "category": null,
+    "id": 3,
+    "created": "2021-05-02T05:58:56.6711182+02:00",
+    "createdBy": 57,
+    "modified": "2021-05-01T18:58:17.3157185+02:00",
+    "modifiedBy": 32
+  },
+  {
+    "name": "Deontae",
+    "icon": "fas fa-hat-cowboy fa-fw",
+    "categoryId": 3,
+    "category": null,
+    "id": 4,
+    "created": "2021-05-02T09:39:46.7496243+02:00",
+    "createdBy": 46,
+    "modified": "2021-05-02T05:53:40.3438231+02:00",
+    "modifiedBy": 95
+  },
+  {
+    "name": "Samara",
+    "icon": "fas fa-brush fa-fw",
+    "categoryId": 5,
+    "category": null,
+    "id": 5,
+    "created": "2021-05-01T19:50:09.7036851+02:00",
+    "createdBy": 8,
+    "modified": "2021-05-02T09:13:20.8160044+02:00",
+    "modifiedBy": 37
+  },
+  {
+    "name": "Sandrine",
+    "icon": "fas fa-cut fa-fw",
+    "categoryId": 10,
+    "category": null,
+    "id": 6,
+    "created": "2021-05-02T04:28:28.0044261+02:00",
+    "createdBy": 22,
+    "modified": "2021-05-01T20:28:12.6170361+02:00",
+    "modifiedBy": 10
+  },
+  {
+    "name": "Nedra",
+    "icon": "fas fa-chart-line fa-fw",
+    "categoryId": 8,
+    "category": null,
+    "id": 7,
+    "created": "2021-05-01T21:16:42.2301979+02:00",
+    "createdBy": 56,
+    "modified": "2021-05-01T22:26:36.7446852+02:00",
+    "modifiedBy": 80
+  },
+  {
+    "name": "Bennie",
+    "icon": "fas fa-anchor fa-fw",
+    "categoryId": 4,
+    "category": null,
+    "id": 8,
+    "created": "2021-05-02T01:03:04.5552885+02:00",
+    "createdBy": 14,
+    "modified": "2021-05-01T15:00:06.230926+02:00",
+    "modifiedBy": 22
+  },
+  {
+    "name": "Arnaldo",
+    "icon": "fas fa-crop-alt fa-fw",
+    "categoryId": 8,
+    "category": null,
+    "id": 9,
+    "created": "2021-05-01T23:39:15.6493935+02:00",
+    "createdBy": 71,
+    "modified": "2021-05-01T22:43:06.3701822+02:00",
+    "modifiedBy": 18
+  },
+  {
+    "name": "Abe",
+    "icon": "fas fa-cloud-sun-rain fa-fw",
+    "categoryId": 1,
+    "category": null,
+    "id": 10,
+    "created": "2021-05-02T02:44:09.2460384+02:00",
+    "createdBy": 48,
+    "modified": "2021-05-02T05:54:47.3632028+02:00",
+    "modifiedBy": 37
+  },
+  {
+    "name": "Cristian",
+    "icon": "fas fa-chess-knight fa-fw",
+    "categoryId": 6,
+    "category": null,
+    "id": 11,
+    "created": "2021-05-01T18:29:44.5775218+02:00",
+    "createdBy": 94,
+    "modified": "2021-05-01T15:46:51.3445497+02:00",
+    "modifiedBy": 87
+  },
+  {
+    "name": "Felipe",
+    "icon": "fas fa-bullseye fa-fw",
+    "categoryId": 8,
+    "category": null,
+    "id": 12,
+    "created": "2021-05-02T08:07:09.6576118+02:00",
+    "createdBy": 32,
+    "modified": "2021-05-01T13:53:31.5853343+02:00",
+    "modifiedBy": 51
+  },
+  {
+    "name": "Giles",
+    "icon": "fas fa-angle-up fa-fw",
+    "categoryId": 3,
+    "category": null,
+    "id": 13,
+    "created": "2021-05-02T08:50:41.6881471+02:00",
+    "createdBy": 76,
+    "modified": "2021-05-01T13:54:50.3396071+02:00",
+    "modifiedBy": 76
+  },
+  {
+    "name": "Alena",
+    "icon": "fas fa-atlas fa-fw",
+    "categoryId": 8,
+    "category": null,
+    "id": 14,
+    "created": "2021-05-01T22:43:59.8031001+02:00",
+    "createdBy": 91,
+    "modified": "2021-05-02T08:17:35.7577826+02:00",
+    "modifiedBy": 79
+  },
+  {
+    "name": "Richie",
+    "icon": "fas fa-chevron-circle-up fa-fw",
+    "categoryId": 3,
+    "category": null,
+    "id": 15,
+    "created": "2021-05-01T12:07:19.5517858+02:00",
+    "createdBy": 69,
+    "modified": "2021-05-01T20:45:56.9194096+02:00",
+    "modifiedBy": 75
+  },
+  {
+    "name": "Gabriel",
+    "icon": "fas fa-comment-alt fa-fw",
+    "categoryId": 7,
+    "category": null,
+    "id": 16,
+    "created": "2021-05-01T15:00:09.8568799+02:00",
+    "createdBy": 97,
+    "modified": "2021-05-01T18:55:10.601285+02:00",
+    "modifiedBy": 90
+  },
+  {
+    "name": "Jared",
+    "icon": "fas fa-hat-cowboy fa-fw",
+    "categoryId": 8,
+    "category": null,
+    "id": 17,
+    "created": "2021-05-01T19:44:03.2363975+02:00",
+    "createdBy": 37,
+    "modified": "2021-05-02T02:23:52.7051626+02:00",
+    "modifiedBy": 74
+  },
+  {
+    "name": "Mohammed",
+    "icon": "fas fa-comment fa-fw",
+    "categoryId": 9,
+    "category": null,
+    "id": 18,
+    "created": "2021-05-02T03:30:56.103299+02:00",
+    "createdBy": 67,
+    "modified": "2021-05-02T00:49:12.8437152+02:00",
+    "modifiedBy": 62
+  },
+  {
+    "name": "Jodie",
+    "icon": "fas fa-child fa-fw",
+    "categoryId": 9,
+    "category": null,
+    "id": 19,
+    "created": "2021-05-01T11:04:22.1826228+02:00",
+    "createdBy": 32,
+    "modified": "2021-05-01T12:06:35.4032127+02:00",
+    "modifiedBy": 19
+  },
+  {
+    "name": "Ned",
+    "icon": "fas fa-calendar-minus fa-fw",
+    "categoryId": 8,
+    "category": null,
+    "id": 20,
+    "created": "2021-05-02T01:14:37.9484636+02:00",
+    "createdBy": 72,
+    "modified": "2021-05-02T04:37:50.47425+02:00",
+    "modifiedBy": 53
+  }
+]

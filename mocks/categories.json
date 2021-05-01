@@ -1,0 +1,102 @@
+[
+  {
+    "name": "Kaylin",
+    "icon": "fas fa-candy-cane fa-fw",
+    "components": null,
+    "id": 1,
+    "created": "2021-05-02T04:03:28.5408249+02:00",
+    "createdBy": 36,
+    "modified": "2021-05-02T01:19:33.5154178+02:00",
+    "modifiedBy": 65
+  },
+  {
+    "name": "Alfreda",
+    "icon": "fas fa-ambulance fa-fw",
+    "components": null,
+    "id": 2,
+    "created": "2021-05-01T21:11:39.875508+02:00",
+    "createdBy": 3,
+    "modified": "2021-05-01T20:46:04.4546155+02:00",
+    "modifiedBy": 89
+  },
+  {
+    "name": "Gerhard",
+    "icon": "fas fa-chart-bar fa-fw",
+    "components": null,
+    "id": 3,
+    "created": "2021-05-02T04:22:36.4164258+02:00",
+    "createdBy": 32,
+    "modified": "2021-05-02T07:52:25.0662359+02:00",
+    "modifiedBy": 50
+  },
+  {
+    "name": "Roman",
+    "icon": "fas fa-chess fa-fw",
+    "components": null,
+    "id": 4,
+    "created": "2021-05-01T13:23:23.3368496+02:00",
+    "createdBy": 59,
+    "modified": "2021-05-01T17:28:22.6433272+02:00",
+    "modifiedBy": 25
+  },
+  {
+    "name": "Joannie",
+    "icon": "fas fa-cut fa-fw",
+    "components": null,
+    "id": 5,
+    "created": "2021-05-01T18:50:56.89761+02:00",
+    "createdBy": 83,
+    "modified": "2021-05-01T14:43:59.5403154+02:00",
+    "modifiedBy": 44
+  },
+  {
+    "name": "Ken",
+    "icon": "fas fa-bullhorn fa-fw",
+    "components": null,
+    "id": 6,
+    "created": "2021-05-01T21:21:10.4063611+02:00",
+    "createdBy": 96,
+    "modified": "2021-05-02T06:57:44.8026829+02:00",
+    "modifiedBy": 58
+  },
+  {
+    "name": "Ola",
+    "icon": "fas fa-chevron-up fa-fw",
+    "components": null,
+    "id": 7,
+    "created": "2021-05-01T17:50:57.5623183+02:00",
+    "createdBy": 16,
+    "modified": "2021-05-01T14:49:57.2540912+02:00",
+    "modifiedBy": 84
+  },
+  {
+    "name": "Carley",
+    "icon": "fas fa-backspace fa-fw",
+    "components": null,
+    "id": 8,
+    "created": "2021-05-02T07:34:50.5576242+02:00",
+    "createdBy": 53,
+    "modified": "2021-05-02T09:10:12.4049664+02:00",
+    "modifiedBy": 18
+  },
+  {
+    "name": "Uriel",
+    "icon": "fas fa-carrot fa-fw",
+    "components": null,
+    "id": 9,
+    "created": "2021-05-02T09:50:50.5460397+02:00",
+    "createdBy": 69,
+    "modified": "2021-05-01T10:56:31.2005076+02:00",
+    "modifiedBy": 21
+  },
+  {
+    "name": "Eladio",
+    "icon": "fas fa-chevron-right fa-fw",
+    "components": null,
+    "id": 10,
+    "created": "2021-05-01T14:29:44.5729261+02:00",
+    "createdBy": 50,
+    "modified": "2021-05-01T22:39:43.9381195+02:00",
+    "modifiedBy": 95
+  }
+]
