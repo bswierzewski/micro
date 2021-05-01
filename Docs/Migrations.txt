@@ -1,7 +1,7 @@
-dotnet ef migrations add "Test" -p .\Infrastructure\ -s .\Database\ -o Data\Migrations
+dotnet ef migrations add "Test" -p .\Infrastructure\ -s .\Backend\ -o Data\Migrations
 
-dotnet ef database update -p .\Infrastructure\ -s .\Database\
+dotnet ef database update -p .\Infrastructure\ -s .\Backend\
 
-dotnet ef database remove -p .\Infrastructure\ -s .\Database\
+dotnet ef database remove -p .\Infrastructure\ -s .\Backend\
 
-dotnet ef migrations script -p .\Infrastructure -s .\Database -o sql.sql
+dotnet ef migrations script -p .\Infrastructure -s .\Backend -o sql.sql
