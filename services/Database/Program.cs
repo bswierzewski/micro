@@ -1,9 +1,8 @@
 ﻿using Database.Faker;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text.Json;
 
 namespace Database
 {
@@ -78,13 +77,10 @@ namespace Database
 
         private static string CreateJson(object obj)
         {
-            return JsonConvert.SerializeObject(obj, new JsonSerializerSettings()
+            return JsonSerializer.Serialize(obj, new JsonSerializerOptions
             {
-                Formatting = Formatting.Indented,
-                ContractResolver = new DefaultContractResolver()
-                {
-                    NamingStrategy = new CamelCaseNamingStrategy()
-                }
+                WriteIndented = true,
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
             });
         }
 
