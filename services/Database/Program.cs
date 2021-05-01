@@ -1,18 +1,13 @@
 ﻿using Database.Faker;
-using Infrastructure.Data;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
-using Core.Entities;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Database
 {
-    class Program
+    public static class Program
     {
         static void Main(string[] args)
         {
@@ -44,7 +39,15 @@ namespace Database
                 .Create(kinds, components, addresses, versions)
                 .Generate(10);
 
-            var json = JsonConvert.SerializeObject(new
+            categories.SaveToFile(nameof(categories));
+            components.SaveToFile(nameof(components));
+            addresses.SaveToFile(nameof(addresses));
+            kinds.SaveToFile(nameof(kinds));
+            versionsData.SaveToFile(nameof(versionsData));
+            versions.SaveToFile(nameof(versions));
+            devices.SaveToFile(nameof(devices));
+
+            var json = CreateJson(new
             {
                 addresses,
                 categories,
@@ -53,7 +56,29 @@ namespace Database
                 kinds,
                 versions,
                 versionsData
-            }, new JsonSerializerSettings()
+            });
+
+            SaveToFile(GetPath("db.json"), json);
+        }
+        private static string GetPath(string fileName)
+        {
+            var currentDirectory = Environment.CurrentDirectory;
+
+            int endIndex = currentDirectory.IndexOf("Services");
+
+            return Path.Join(currentDirectory.Substring(0, endIndex), "Mocks", fileName);
+        }
+
+        private static void SaveToFile<T>(this List<T> collections, string name)
+        {
+            var json = CreateJson(collections);
+
+            SaveToFile(GetPath($"{name}.json"), json);
+        }
+
+        private static string CreateJson(object obj)
+        {
+            return JsonConvert.SerializeObject(obj, new JsonSerializerSettings()
             {
                 Formatting = Formatting.Indented,
                 ContractResolver = new DefaultContractResolver()
@@ -61,41 +86,10 @@ namespace Database
                     NamingStrategy = new CamelCaseNamingStrategy()
                 }
             });
-
-            SaveToFile(json);
-
-            using (var db = new StoreContext())
-            {
-                db.Database.EnsureDeleted();
-
-                db.Database.EnsureCreated();
-
-                db.Addresses.AddRange(addresses);
-
-                db.Categories.AddRange(categories);
-
-                db.Components.AddRange(components);
-
-                db.Devices.AddRange(devices);
-
-                db.Kinds.AddRange(kinds);
-
-                db.Versions.AddRange(versions);
-
-                db.VersionsData.AddRange(versionsData);
-
-                db.SaveChanges();
-            }
         }
 
-        private static void SaveToFile(string json)
+        private static void SaveToFile(string path, string json)
         {
-            var currentDirectory = Environment.CurrentDirectory;
-
-            int endIndex = currentDirectory.IndexOf("Services");
-
-            var path = Path.Join(currentDirectory.Substring(0, endIndex), "Mocks", "db.json");
-
             File.WriteAllText(path, json);
         }
     }
