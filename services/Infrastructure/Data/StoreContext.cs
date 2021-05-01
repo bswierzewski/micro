@@ -9,13 +9,6 @@ namespace Infrastructure.Data
         public StoreContext() : base() { }
         public StoreContext(DbContextOptions<StoreContext> options) : base(options) { }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            base.OnConfiguring(optionsBuilder);
-
-            optionsBuilder.UseSqlite($"Data source=Micro.db");
-        }
-
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Component> Components { get; set; }
