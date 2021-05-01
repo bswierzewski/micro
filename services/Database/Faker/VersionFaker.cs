@@ -14,7 +14,7 @@ namespace Database.Faker
                 .RuleFor(x => x.CreatedBy, f => f.Random.Int(1, 100))
                 .RuleFor(x => x.Modified, f => f.Date.Soon())
                 .RuleFor(x => x.ModifiedBy, f => f.Random.Int(1, 100))
-                .RuleFor(x => x.Kind, f => f.PickRandom(kinds))
+                .RuleFor(x => x.KindId, f => f.PickRandom(kinds).Id)
                 .RuleFor(x => x.ComponentId, f => f.PickRandom(components).Id)
                 .RuleFor(x => x.VersionDataId, f => f.PickRandom(versionsData).Id)
                 .RuleFor(x => x.Name, f => f.Name.FirstName());
