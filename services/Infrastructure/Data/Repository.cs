@@ -18,13 +18,13 @@ namespace Infrastructure.Data
             _context = context;
         }
 
-        public virtual async Task<TEntity> GetById(int id, List<Expression<Func<TEntity, object>>> includeProperties = null)
+        public virtual async Task<TEntity> GetById(int id, List<Expression<Func<TEntity, object>>> includes = null)
         {
             IQueryable<TEntity> query = _context.Set<TEntity>();
 
-            if (includeProperties != null && includeProperties.Any())
+            if (includes != null && includes.Any())
             {
-                includeProperties.ToList().ForEach(includeProperty =>
+                includes.ToList().ForEach(includeProperty =>
                 {
                     query = query.Include(includeProperty);
                 });
