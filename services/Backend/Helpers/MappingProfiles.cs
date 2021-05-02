@@ -9,6 +9,9 @@ namespace Backend.Helpers
     {
         public MappingProfiles()
         {
+            //Address
+            CreateMap<AddressToCreateDto, Address>();
+
             // Category
             CreateMap<Category, CategoryDto>()
                 .ForMember(d => d.ComponentIds, o => o.MapFrom(s => s.Components.Select(x => x.Id)));
