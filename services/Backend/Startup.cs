@@ -1,3 +1,4 @@
+using Backend.Extensions;
 using Backend.Helpers;
 using Core.Interfaces;
 using Infrastructure.Data;
@@ -24,9 +25,13 @@ namespace Backend
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDbContext<StoreContext>(opts => opts.UseSqlite(_config.GetConnectionString("DefaultConnection")));
-            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
             services.AddAutoMapper(typeof(MappingProfiles));
+
+            services.AddDbContext<StoreContext>(opts => opts.UseSqlite(_config.GetConnectionString("DefaultConnection")));
+
+            services.AddApplicationServices();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Backend", Version = "v1" });
