@@ -12,6 +12,6 @@ namespace Core.Interfaces
         Task<IEnumerable<TEntity>> Get(Expression<Func<TEntity, bool>> filter = null, List<Expression<Func<TEntity, object>>> includes = null);
         void Add(TEntity entity);
         void Update(TEntity entity);
-        void Delete(TEntity entity);
+        void Delete(int id);
     }
 }

@@ -64,9 +64,14 @@ namespace Infrastructure.Data
             _context.Entry(entity).State = EntityState.Modified;
         }
 
-        public virtual void Delete(TEntity entity)
+        public virtual async void Delete(int id)
         {
-            _context.Set<TEntity>().Remove(entity);
+            var entity = await _context.Set<TEntity>().FindAsync(id);
+
+            if (entity != null)
+            {
+                _context.Set<TEntity>().Remove(entity);
+            }
         }
     }
 }
