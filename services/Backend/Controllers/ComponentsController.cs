@@ -10,18 +10,9 @@ using System.Threading.Tasks;
 
 namespace Backend.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class ComponentsController : ControllerBase
+    public class ComponentsController : ControllerBaseEntity<Component>
     {
-        private readonly IMapper _mapper;
-        private readonly IUnitOfWork _unitOfWork;
-
-        public ComponentsController(IMapper mapper, IUnitOfWork unitOfWork)
-        {
-            _unitOfWork = unitOfWork;
-            _mapper = mapper;
-        }
+        public ComponentsController(IMapper mapper, IUnitOfWork unitOfWork) : base(mapper, unitOfWork) { }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<ComponentDto>> GetComponent(int id)

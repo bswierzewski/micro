@@ -6,18 +6,9 @@ using System.Threading.Tasks;
 
 namespace Backend.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class KindsController : ControllerBase
+    public class KindsController : ControllerBaseEntity<Kind>
     {
-        private readonly IMapper _mapper;
-        private readonly IUnitOfWork _unitOfWork;
-
-        public KindsController(IMapper mapper, IUnitOfWork unitOfWork)
-        {
-            _unitOfWork = unitOfWork;
-            _mapper = mapper;
-        }
+        public KindsController(IMapper mapper, IUnitOfWork unitOfWork) : base(mapper, unitOfWork) { }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetKind(int id)

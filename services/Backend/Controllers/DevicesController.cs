@@ -8,18 +8,9 @@ using System.Threading.Tasks;
 
 namespace Backend.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class DevicesController : ControllerBase
+    public class DevicesController : ControllerBaseEntity<Device>
     {
-        private readonly IMapper _mapper;
-        private readonly IUnitOfWork _unitOfWork;
-
-        public DevicesController(IMapper mapper, IUnitOfWork unitOfWork)
-        {
-            _unitOfWork = unitOfWork;
-            _mapper = mapper;
-        }
+        public DevicesController(IMapper mapper, IUnitOfWork unitOfWork) : base(mapper, unitOfWork) { }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<DeviceDto>> GetDevice(int id)

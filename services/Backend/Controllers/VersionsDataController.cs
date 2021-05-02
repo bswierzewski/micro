@@ -6,18 +6,10 @@ using System.Threading.Tasks;
 
 namespace Backend.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class VersionsDataController : ControllerBase
+    public class VersionsDataController : ControllerBaseEntity<VersionData>
     {
-        private readonly IMapper _mapper;
-        private readonly IUnitOfWork _unitOfWork;
 
-        public VersionsDataController(IMapper mapper, IUnitOfWork unitOfWork)
-        {
-            _unitOfWork = unitOfWork;
-            _mapper = mapper;
-        }
+        public VersionsDataController(IMapper mapper, IUnitOfWork unitOfWork) : base(mapper, unitOfWork) { }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetVersionData(int id)
