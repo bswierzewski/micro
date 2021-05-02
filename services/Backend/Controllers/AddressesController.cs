@@ -47,5 +47,15 @@ namespace Backend.Controllers
 
             return Ok();
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteAddress(int id)
+        {
+            _unitOfWork.Repository<Address>().Delete(id);
+
+            await _unitOfWork.Complete();
+
+            return Ok();
+        }
     }
 }
