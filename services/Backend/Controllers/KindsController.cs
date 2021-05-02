@@ -10,19 +10,19 @@ namespace Backend.Controllers
     [Route("api/[controller]")]
     public class KindsController : ControllerBase
     {
-        private readonly IRepository<Kind> _repo;
         private readonly IMapper _mapper;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public KindsController(IMapper mapper, IRepository<Kind> repo)
+        public KindsController(IMapper mapper, IUnitOfWork unitOfWork)
         {
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
-            _repo = repo;
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetKind(int id)
         {
-            var result = await _repo.GetById(id);
+            var result = await _unitOfWork.Repository<Kind>().GetById(id);
 
             return Ok(result);
         }
@@ -30,7 +30,7 @@ namespace Backend.Controllers
         [HttpGet]
         public async Task<IActionResult> GetKinds()
         {
-            var results = await _repo.Get();
+            var results = await _unitOfWork.Repository<Kind>().Get();
 
             return Ok(results);
         }

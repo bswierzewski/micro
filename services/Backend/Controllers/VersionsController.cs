@@ -12,19 +12,19 @@ namespace Backend.Controllers
     [Route("api/[controller]")]
     public class VersionsController : ControllerBase
     {
-        private readonly IRepository<Version> _repo;
         private readonly IMapper _mapper;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public VersionsController(IMapper mapper, IRepository<Version> repo)
+        public VersionsController(IMapper mapper, IUnitOfWork unitOfWork)
         {
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
-            _repo = repo;
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<VersionDto>> GetVersion(int id)
         {
-            var result = await _repo.GetById(id);
+            var result = await _unitOfWork.Repository<Version>().GetById(id);
 
             return _mapper.Map<VersionDto>(result);
         }
@@ -32,7 +32,7 @@ namespace Backend.Controllers
         [HttpGet]
         public async Task<ActionResult<List<VersionDto>>> GetVersions()
         {
-            var results = await _repo.Get();
+            var results = await _unitOfWork.Repository<Version>().Get();
 
             return _mapper.Map<List<VersionDto>>(results);
         }

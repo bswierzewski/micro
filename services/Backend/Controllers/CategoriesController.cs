@@ -14,19 +14,19 @@ namespace Backend.Controllers
     [Route("api/[controller]")]
     public class CategoriesController : ControllerBase
     {
-        private readonly IRepository<Category> _repo;
         private readonly IMapper _mapper;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public CategoriesController(IMapper mapper, IRepository<Category> repo)
+        public CategoriesController(IMapper mapper, IUnitOfWork unitOfWork)
         {
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
-            _repo = repo;
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<CategoryDto>> GetCategory(int id)
         {
-            var result = await _repo.GetById(id, includes: new List<Expression<Func<Category, object>>>
+            var result = await _unitOfWork.Repository<Category>().GetById(id, includes: new List<Expression<Func<Category, object>>>
             {
                 x => x.Components
             });
@@ -37,7 +37,7 @@ namespace Backend.Controllers
         [HttpGet]
         public async Task<ActionResult<List<CategoryDto>>> GetCategories()
         {
-            var results = await _repo.Get(includes: new List<Expression<Func<Category, object>>>
+            var results = await _unitOfWork.Repository<Category>().Get(includes: new List<Expression<Func<Category, object>>>
             {
                 x => x.Components
             });

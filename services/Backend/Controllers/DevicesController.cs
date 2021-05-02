@@ -12,19 +12,19 @@ namespace Backend.Controllers
     [Route("api/[controller]")]
     public class DevicesController : ControllerBase
     {
-        private readonly IRepository<Device> _repo;
         private readonly IMapper _mapper;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public DevicesController(IMapper mapper, IRepository<Device> repo)
+        public DevicesController(IMapper mapper, IUnitOfWork unitOfWork)
         {
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
-            _repo = repo;
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<DeviceDto>> GetDevice(int id)
         {
-            var result = await _repo.GetById(id);
+            var result = await _unitOfWork.Repository<Device>().GetById(id);
 
             return _mapper.Map<DeviceDto>(result);
         }
@@ -32,7 +32,7 @@ namespace Backend.Controllers
         [HttpGet]
         public async Task<ActionResult<List<DeviceDto>>> GetDevices()
         {
-            var results = await _repo.Get();
+            var results = await _unitOfWork.Repository<Device>().Get();
 
             return _mapper.Map<List<DeviceDto>>(results);
         }

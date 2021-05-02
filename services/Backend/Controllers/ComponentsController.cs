@@ -14,19 +14,19 @@ namespace Backend.Controllers
     [Route("api/[controller]")]
     public class ComponentsController : ControllerBase
     {
-        private readonly IRepository<Component> _repo;
         private readonly IMapper _mapper;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public ComponentsController(IMapper mapper, IRepository<Component> repo)
+        public ComponentsController(IMapper mapper, IUnitOfWork unitOfWork)
         {
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
-            _repo = repo;
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<ComponentDto>> GetComponent(int id)
         {
-            var result = await _repo.GetById(id);
+            var result = await _unitOfWork.Repository<Component>().GetById(id);
 
             return _mapper.Map<ComponentDto>(result);
         }
@@ -34,7 +34,7 @@ namespace Backend.Controllers
         [HttpGet]
         public async Task<ActionResult<List<ComponentDto>>> GetComponents()
         {
-            var results = await _repo.Get();
+            var results = await _unitOfWork.Repository<Component>().Get();
 
             return _mapper.Map<List<ComponentDto>>(results);
         }
