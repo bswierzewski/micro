@@ -1,4 +1,5 @@
-﻿using Core.Entities;
+﻿using AutoMapper;
+using Core.Entities;
 using Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -7,17 +8,19 @@ namespace Backend.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class DeviceController : ControllerBase
+    public class KindsController : ControllerBase
     {
-        private readonly IRepository<Device> _repo;
+        private readonly IRepository<Kind> _repo;
+        private readonly IMapper _mapper;
 
-        public DeviceController(IRepository<Device> repo)
+        public KindsController(IMapper mapper, IRepository<Kind> repo)
         {
+            _mapper = mapper;
             _repo = repo;
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetDevice(int id)
+        public async Task<IActionResult> GetKind(int id)
         {
             var result = await _repo.GetById(id);
 
@@ -25,7 +28,7 @@ namespace Backend.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetDevices()
+        public async Task<IActionResult> GetKinds()
         {
             var results = await _repo.Get();
 

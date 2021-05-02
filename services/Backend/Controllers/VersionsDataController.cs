@@ -1,4 +1,5 @@
-﻿using Core.Entities;
+﻿using AutoMapper;
+using Core.Entities;
 using Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -7,17 +8,19 @@ namespace Backend.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class KindController : ControllerBase
+    public class VersionsDataController : ControllerBase
     {
-        private readonly IRepository<Kind> _repo;
+        private readonly IRepository<VersionData> _repo;
+        private readonly IMapper _mapper;
 
-        public KindController(IRepository<Kind> repo)
+        public VersionsDataController(IMapper mapper, IRepository<VersionData> repo)
         {
+            _mapper = mapper;
             _repo = repo;
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetKind(int id)
+        public async Task<IActionResult> GetVersionData(int id)
         {
             var result = await _repo.GetById(id);
 
@@ -25,7 +28,7 @@ namespace Backend.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetKinds()
+        public async Task<IActionResult> GetVersionsData()
         {
             var results = await _repo.Get();
 
