@@ -1,8 +1,10 @@
 using AutoMapper;
 using Backend.Dtos;
+using Backend.Wrappers;
 using Core.Entities;
 using Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Backend.Controllers
@@ -16,7 +18,7 @@ namespace Backend.Controllers
         {
             var result = await _unitOfWork.Repository<Address>().GetById(id);
 
-            return Ok(result);
+            return Ok(new Response<Address>(result));
         }
 
         [HttpGet]
@@ -24,7 +26,7 @@ namespace Backend.Controllers
         {
             var results = await _unitOfWork.Repository<Address>().Get();
 
-            return Ok(results);
+            return Ok(new Response<IEnumerable<Address>>(results));
         }
 
         [HttpPost]
@@ -36,7 +38,7 @@ namespace Backend.Controllers
 
             await _unitOfWork.Complete();
 
-            return Ok();
+            return Ok(new Response<Address>(address));
         }
     }
 }
