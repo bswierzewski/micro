@@ -5,14 +5,24 @@ import { ServerErrorComponent } from './core/http/server-error/server-error.comp
 
 export const routes: Routes = [
   {
-    path: 'server-error',
-    component: ServerErrorComponent,
+    path: 'home',
+    loadChildren: () =>
+      import('./modules/home/home.module').then((m) => m.HomeModule),
   },
   {
-    path: 'not-found',
-    component: NotFoundComponent,
+    path: 'admin',
+    loadChildren: () =>
+      import('./modules/admin/admin.module').then((m) => m.AdminModule),
   },
-  { path: '**', redirectTo: 'not-found', pathMatch: 'full' },
+  // {
+  //   path: 'server-error',
+  //   component: ServerErrorComponent,
+  // },
+  // {
+  //   path: 'not-found',
+  //   component: NotFoundComponent,
+  // },
+  // { path: '**', redirectTo: 'not-found', pathMatch: 'full' },
 ];
 
 @NgModule({
