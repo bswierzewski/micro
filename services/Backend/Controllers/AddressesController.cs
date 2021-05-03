@@ -14,23 +14,23 @@ namespace Backend.Controllers
         public AddressesController(IMapper mapper, IUnitOfWork unitOfWork) : base(mapper, unitOfWork) { }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetAddress(int id)
+        public async Task<ActionResult<Response<Address>>> GetAddress(int id)
         {
             var result = await _unitOfWork.Repository<Address>().GetById(id);
 
-            return Ok(new Response<Address>(result));
+            return new Response<Address>(result);
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAddresses()
+        public async Task<ActionResult<Response<IEnumerable<Address>>>> GetAddresses()
         {
             var results = await _unitOfWork.Repository<Address>().Get();
 
-            return Ok(new Response<IEnumerable<Address>>(results));
+            return new Response<IEnumerable<Address>>(results);
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateAddress(AddressToCreateDto addressDto)
+        public async Task<ActionResult<Response<Address>>> CreateAddress(AddressToCreateDto addressDto)
         {
             var address = _mapper.Map<Address>(addressDto);
 
@@ -38,7 +38,7 @@ namespace Backend.Controllers
 
             await _unitOfWork.Complete();
 
-            return Ok(new Response<Address>(address));
+            return new Response<Address>(address);
         }
     }
 }
