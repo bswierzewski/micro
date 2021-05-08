@@ -3,24 +3,26 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{222FDA6F-E491-4DAB-8F77-2495057E7C88}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{222FDA6F-E491-4DAB-8F77-2495057E7C88}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Services\Core\Core.csproj", "{248CC662-4308-4393-B25F-ACB6B1AAC0EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "src\Core\Core.csproj", "{248CC662-4308-4393-B25F-ACB6B1AAC0EB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Services\Infrastructure\Infrastructure.csproj", "{6035967F-8866-4DA5-A413-181BA7E81D64}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "src\Infrastructure\Infrastructure.csproj", "{6035967F-8866-4DA5-A413-181BA7E81D64}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Database", "Services\Database\Database.csproj", "{8EC2326A-196B-4A89-A660-963F9EF5EE7D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Database", "src\Database\Database.csproj", "{8EC2326A-196B-4A89-A660-963F9EF5EE7D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dockerfiles", "Dockerfiles", "{D8BA5C8F-3A58-4865-BDBA-FEA4E287B4BE}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{61E796F6-781F-4A26-A518-4E3082B93B45}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{61E796F6-781F-4A26-A518-4E3082B93B45}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mocks", "Mocks", "{99EA8F8B-745E-4E7A-A1BF-439A04200F2B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "mocks", "mocks", "{99EA8F8B-745E-4E7A-A1BF-439A04200F2B}"
 	ProjectSection(SolutionItems) = preProject
 		Mocks\db.json = Mocks\db.json
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend", "Services\Backend\Backend.csproj", "{2B0BB96A-E2A7-4670-8D85-2AA06F8050ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend", "src\Backend\Backend.csproj", "{2B0BB96A-E2A7-4670-8D85-2AA06F8050ED}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{5F804721-1CB9-4CE5-95A2-82B363E93512}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend.Tests", "test\Backend.Tests\Backend.Tests.csproj", "{DEBB64FE-3D2F-4516-9465-AAF70E785419}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -80,6 +82,18 @@ Global
 		{2B0BB96A-E2A7-4670-8D85-2AA06F8050ED}.Release|x64.Build.0 = Release|Any CPU
 		{2B0BB96A-E2A7-4670-8D85-2AA06F8050ED}.Release|x86.ActiveCfg = Release|Any CPU
 		{2B0BB96A-E2A7-4670-8D85-2AA06F8050ED}.Release|x86.Build.0 = Release|Any CPU
+		{DEBB64FE-3D2F-4516-9465-AAF70E785419}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEBB64FE-3D2F-4516-9465-AAF70E785419}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEBB64FE-3D2F-4516-9465-AAF70E785419}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{DEBB64FE-3D2F-4516-9465-AAF70E785419}.Debug|x64.Build.0 = Debug|Any CPU
+		{DEBB64FE-3D2F-4516-9465-AAF70E785419}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DEBB64FE-3D2F-4516-9465-AAF70E785419}.Debug|x86.Build.0 = Debug|Any CPU
+		{DEBB64FE-3D2F-4516-9465-AAF70E785419}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEBB64FE-3D2F-4516-9465-AAF70E785419}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEBB64FE-3D2F-4516-9465-AAF70E785419}.Release|x64.ActiveCfg = Release|Any CPU
+		{DEBB64FE-3D2F-4516-9465-AAF70E785419}.Release|x64.Build.0 = Release|Any CPU
+		{DEBB64FE-3D2F-4516-9465-AAF70E785419}.Release|x86.ActiveCfg = Release|Any CPU
+		{DEBB64FE-3D2F-4516-9465-AAF70E785419}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -89,6 +103,7 @@ Global
 		{6035967F-8866-4DA5-A413-181BA7E81D64} = {222FDA6F-E491-4DAB-8F77-2495057E7C88}
 		{8EC2326A-196B-4A89-A660-963F9EF5EE7D} = {222FDA6F-E491-4DAB-8F77-2495057E7C88}
 		{2B0BB96A-E2A7-4670-8D85-2AA06F8050ED} = {222FDA6F-E491-4DAB-8F77-2495057E7C88}
+		{DEBB64FE-3D2F-4516-9465-AAF70E785419} = {5F804721-1CB9-4CE5-95A2-82B363E93512}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1DC4F442-99CF-417E-80B6-6E4C904B31BD}
