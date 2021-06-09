@@ -2,7 +2,6 @@
 using Core.Interfaces;
 using System;
 using System.Collections;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Data
 {
@@ -15,9 +14,9 @@ namespace Infrastructure.Data
             _context = context;
         }
 
-        public async Task<int> Complete()
+        public bool Complete()
         {
-            return await _context.SaveChangesAsync();
+            return _context.SaveChanges() > 0;
         }
 
         public void Dispose()

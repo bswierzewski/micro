@@ -18,7 +18,7 @@ namespace Infrastructure.Data
             _context = context;
         }
 
-        public virtual async Task<TEntity> GetById(int id, List<Expression<Func<TEntity, object>>> includes = null)
+        public virtual TEntity GetById(int id, List<Expression<Func<TEntity, object>>> includes = null)
         {
             IQueryable<TEntity> query = _context.Set<TEntity>();
 
@@ -30,10 +30,10 @@ namespace Infrastructure.Data
                 });
             }
 
-            return await query.FirstOrDefaultAsync(x => x.Id == id);
+            return query.FirstOrDefault(x => x.Id == id);
         }
 
-        public virtual async Task<IEnumerable<TEntity>> Get(Expression<Func<TEntity, bool>> filter = null, List<Expression<Func<TEntity, object>>> includeProperties = null)
+        public virtual IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null, List<Expression<Func<TEntity, object>>> includeProperties = null)
         {
             IQueryable<TEntity> query = _context.Set<TEntity>();
 
@@ -50,7 +50,7 @@ namespace Infrastructure.Data
                 });
             }
 
-            return await query.ToListAsync();
+            return query.ToList();
         }
 
         public virtual void Add(TEntity entity)
