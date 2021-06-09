@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using AutoMapper;
 using Core.Entities;
 using Core.Interfaces;
@@ -20,11 +18,11 @@ namespace Backend.Controllers
         }
 
         [HttpDelete("{id}")]
-        public virtual async Task<ActionResult> Delete(int id)
+        public virtual ActionResult Delete(int id)
         {
             _unitOfWork.Repository<T>().Delete(id);
 
-            await _unitOfWork.Complete();
+            _unitOfWork.Complete();
 
             return Ok();
         }

@@ -4,7 +4,6 @@ using Core.Entities;
 using Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace Backend.Controllers
 {
@@ -14,17 +13,17 @@ namespace Backend.Controllers
         public VersionsController(IMapper mapper, IUnitOfWork unitOfWork) : base(mapper, unitOfWork) { }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<VersionDto>> GetVersion(int id)
+        public ActionResult<VersionDto> GetVersion(int id)
         {
-            var result = await _unitOfWork.Repository<Version>().GetById(id);
+            var result = _unitOfWork.Repository<Version>().GetById(id);
 
             return _mapper.Map<VersionDto>(result);
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<VersionDto>>> GetVersions()
+        public ActionResult<List<VersionDto>> GetVersions()
         {
-            var results = await _unitOfWork.Repository<Version>().Get();
+            var results = _unitOfWork.Repository<Version>().Get();
 
             return _mapper.Map<List<VersionDto>>(results);
         }

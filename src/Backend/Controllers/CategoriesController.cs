@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Threading.Tasks;
 
 namespace Backend.Controllers
 {
@@ -15,9 +14,9 @@ namespace Backend.Controllers
         public CategoriesController(IMapper mapper, IUnitOfWork unitOfWork) : base(mapper, unitOfWork) { }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<CategoryDto>> GetCategory(int id)
+        public ActionResult<CategoryDto> GetCategory(int id)
         {
-            var result = await _unitOfWork.Repository<Category>().GetById(id, includes: new List<Expression<Func<Category, object>>>
+            var result = _unitOfWork.Repository<Category>().GetById(id, includes: new List<Expression<Func<Category, object>>>
             {
                 x => x.Components
             });
@@ -26,9 +25,9 @@ namespace Backend.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<CategoryDto>>> GetCategories()
+        public ActionResult<List<CategoryDto>> GetCategories()
         {
-            var results = await _unitOfWork.Repository<Category>().Get(includes: new List<Expression<Func<Category, object>>>
+            var results = _unitOfWork.Repository<Category>().Get(includes: new List<Expression<Func<Category, object>>>
             {
                 x => x.Components
             });

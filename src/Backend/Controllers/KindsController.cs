@@ -2,7 +2,6 @@
 using Core.Entities;
 using Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 
 namespace Backend.Controllers
 {
@@ -11,17 +10,17 @@ namespace Backend.Controllers
         public KindsController(IMapper mapper, IUnitOfWork unitOfWork) : base(mapper, unitOfWork) { }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetKind(int id)
+        public IActionResult GetKind(int id)
         {
-            var result = await _unitOfWork.Repository<Kind>().GetById(id);
+            var result = _unitOfWork.Repository<Kind>().GetById(id);
 
             return Ok(result);
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetKinds()
+        public IActionResult GetKinds()
         {
-            var results = await _unitOfWork.Repository<Kind>().Get();
+            var results = _unitOfWork.Repository<Kind>().Get();
 
             return Ok(results);
         }

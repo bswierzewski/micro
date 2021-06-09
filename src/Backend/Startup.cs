@@ -1,15 +1,14 @@
-using System.Text.Json;
 using Backend.Extensions;
 using Backend.Helpers;
 using Backend.Middleware;
-using Infrastructure.Data;
+using Core.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using System.Text.Json;
 
 namespace Backend
 {
@@ -34,7 +33,16 @@ namespace Backend
 
             services.AddAutoMapper(typeof(MappingProfiles));
 
-            services.AddDbContext<StoreContext>(opts => opts.UseSqlite(_config.GetConnectionString("DefaultConnection")));
+            // EF CORE
+            //services.AddDbContext<StoreContext>(opts => opts.UseSqlite(_config.GetConnectionString("DefaultConnection")));
+            //services.AddScoped<IUnitOfWork, Infrastructure.Data.UnitOfWork>();
+
+            // LiteDB
+            //services.AddScoped<LiteDbContext, LiteDbContext>();
+            //services.AddScoped<IUnitOfWork, InfrastructureLiteDB.Data.UnitOfWork>();
+
+            // JSON
+            //services.AddScoped<IUnitOfWork, InfrastructureJson.Data.UnitOfWork>();
 
             services.AddApplicationServices();
 
