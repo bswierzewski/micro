@@ -18,7 +18,7 @@ namespace Backend.Tests.Controllers
 
             var unitOfWork = new Mock<IUnitOfWork>();
 
-            unitOfWork.Setup(z => z.Repository<Address>().GetById(It.IsAny<int>(), null)).ReturnsAsync(new Address());
+            unitOfWork.Setup(z => z.Repository<Address>().GetById(It.IsAny<int>(), null)).Returns(new Address());
 
             controller = new AddressesController(mapper.Object, unitOfWork.Object);
         }

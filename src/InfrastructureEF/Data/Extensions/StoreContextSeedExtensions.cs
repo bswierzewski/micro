@@ -3,7 +3,7 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace Infrastructure.Data.Extensions
+namespace InfrastructureEF.Data.Extensions
 {
     public static class StoreContextSeedExtensions
     {

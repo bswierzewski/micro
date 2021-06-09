@@ -35,7 +35,7 @@ namespace Backend
 
             // EF CORE
             //services.AddDbContext<StoreContext>(opts => opts.UseSqlite(_config.GetConnectionString("DefaultConnection")));
-            //services.AddScoped<IUnitOfWork, Infrastructure.Data.UnitOfWork>();
+            //services.AddScoped<IUnitOfWork, InfrastructureEF.Data.UnitOfWork>();
 
             // LiteDB
             //services.AddScoped<LiteDbContext, LiteDbContext>();

@@ -1,11 +1,11 @@
 using System;
 using System.Threading.Tasks;
 using Core.Entities;
-using Infrastructure.Data.Extensions;
+using InfrastructureEF.Data.Extensions;
 using Microsoft.Extensions.Logging;
 using Version = Core.Entities.Version;
 
-namespace Infrastructure.Data
+namespace InfrastructureEF.Data
 {
     public class StoreContextSeed
     {

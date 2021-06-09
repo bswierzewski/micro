@@ -3,7 +3,7 @@ using Core.Interfaces;
 using System;
 using System.Collections;
 
-namespace Infrastructure.Data
+namespace InfrastructureEF.Data
 {
     public class UnitOfWork : IUnitOfWork
     {

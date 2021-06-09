@@ -2,7 +2,7 @@ using Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using Version = Core.Entities.Version;
 
-namespace Infrastructure.Data
+namespace InfrastructureEF.Data
 {
     public class StoreContext : DbContext
     {
