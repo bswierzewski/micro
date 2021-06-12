@@ -1,0 +1,9 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>micro_api.Domain</RootNamespace>
+    <AssemblyName>micro_api.Domain</AssemblyName>
+  </PropertyGroup>
+
+</Project>
