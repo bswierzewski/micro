@@ -2,7 +2,7 @@
 
 namespace micro_api.Domain.Events.Label
 {
-    class LabelCreatedEvent : DomainEvent
+    public class LabelCreatedEvent : DomainEvent
     {
         public Entities.Label Label { get; }
 
