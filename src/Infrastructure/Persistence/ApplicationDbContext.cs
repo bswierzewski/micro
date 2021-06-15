@@ -32,8 +32,14 @@ namespace micro_api.Infrastructure.Persistence
         }
 
         public DbSet<TodoItem> TodoItems { get; set; }
-
         public DbSet<TodoList> TodoLists { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Component> Components { get; set; }
+        public DbSet<Device> Devices { get; set; }
+        public DbSet<Kind> Kinds { get; set; }
+        public DbSet<Label> Labels { get; set; }
+        public DbSet<Version> Versions { get; set; }
+        public DbSet<VersionData> VersionsData { get; set; }
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
