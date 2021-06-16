@@ -1,8 +1,9 @@
-﻿using micro_api.Application.Common.Interfaces;
+﻿using IdentityServer4.EntityFramework.Options;
+using micro_api.Application.Common.Interfaces;
 using micro_api.Domain.Common;
 using micro_api.Domain.Entities;
+using micro_api.Domain.Interfaces;
 using micro_api.Infrastructure.Identity;
-using IdentityServer4.EntityFramework.Options;
 using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -43,7 +44,7 @@ namespace micro_api.Infrastructure.Persistence
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
-            foreach (Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry<AuditableEntity> entry in ChangeTracker.Entries<AuditableEntity>())
+            foreach (var entry in ChangeTracker.Entries<IAuditableEntity>())
             {
                 switch (entry.State)
                 {

@@ -5,7 +5,6 @@ namespace micro_api.Domain.Entities
 {
     public class Device : AuditableEntity
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public string Icon { get; set; }
         public int? LabelId { get; set; }

@@ -4,7 +4,6 @@ namespace micro_api.Domain.Entities
 {
     public class Version : AuditableEntity
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public short Major { get; set; }
         public short Minor { get; set; }
