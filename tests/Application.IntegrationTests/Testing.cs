@@ -1,8 +1,8 @@
-﻿using micro_api.Application.Common.Interfaces;
+﻿using MediatR;
+using micro_api.Application.Common.Interfaces;
 using micro_api.Infrastructure.Identity;
 using micro_api.Infrastructure.Persistence;
 using micro_api.WebUI;
-using MediatR;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -10,7 +10,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using NUnit.Framework;
-using Respawn;
 using System;
 using System.IO;
 using System.Linq;
@@ -21,7 +20,6 @@ public class Testing
 {
     private static IConfigurationRoot _configuration;
     private static IServiceScopeFactory _scopeFactory;
-    private static Checkpoint _checkpoint;
     private static string _currentUserId;
 
     [OneTimeSetUp]
@@ -58,11 +56,6 @@ public class Testing
             Mock.Of<ICurrentUserService>(s => s.UserId == _currentUserId));
 
         _scopeFactory = services.BuildServiceProvider().GetService<IServiceScopeFactory>();
-
-        _checkpoint = new Checkpoint
-        {
-            TablesToIgnore = new[] { "__EFMigrationsHistory" }
-        };
 
         EnsureDatabase();
     }
@@ -131,7 +124,14 @@ public class Testing
 
     public static async Task ResetState()
     {
-        await _checkpoint.Reset(_configuration.GetConnectionString("DefaultConnection"));
+        using var scope = _scopeFactory.CreateScope();
+
+        var context = scope.ServiceProvider.GetService<ApplicationDbContext>();
+
+        await context.Database.EnsureDeletedAsync();
+
+        await context.Database.MigrateAsync();
+
         _currentUserId = null;
     }
 
