@@ -25,10 +25,10 @@ namespace micro_api.WebUI
                 {
                     var context = services.GetRequiredService<ApplicationDbContext>();
 
-                    if (context.Database.IsSqlServer())
+                    if (context.Database.IsSqlServer() || context.Database.IsSqlite())
                     {
                         context.Database.Migrate();
-                    }                   
+                    }
 
                     var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
                     var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();

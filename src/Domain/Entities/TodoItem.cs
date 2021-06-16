@@ -2,10 +2,11 @@
 using micro_api.Domain.Enums;
 using micro_api.Domain.Events;
 using System;
+using System.Collections.Generic;
 
 namespace micro_api.Domain.Entities
 {
-    public class TodoItem : BaseEntity
+    public class TodoItem : BaseEntity, IHasDomainEvent
     {
 
         public TodoList List { get; set; }
@@ -34,5 +35,7 @@ namespace micro_api.Domain.Entities
                 _done = value;
             }
         }
+
+        public List<DomainEvent> DomainEvents { get; set; } = new List<DomainEvent>();
     }
 }

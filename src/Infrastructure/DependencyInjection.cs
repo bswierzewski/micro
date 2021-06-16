@@ -18,12 +18,12 @@ namespace micro_api.Infrastructure
             if (configuration.GetValue<bool>("UseInMemoryDatabase"))
             {
                 services.AddDbContext<ApplicationDbContext>(options =>
-                    options.UseInMemoryDatabase("micro_apiDb"));
+                    options.UseInMemoryDatabase("micro_api"));
             }
             else
             {
                 services.AddDbContext<ApplicationDbContext>(options =>
-                    options.UseSqlServer(
+                    options.UseSqlite(
                         configuration.GetConnectionString("DefaultConnection"),
                         b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
             }
