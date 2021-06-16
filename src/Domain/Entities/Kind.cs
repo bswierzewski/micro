@@ -2,7 +2,7 @@
 
 namespace micro_api.Domain.Entities
 {
-    public class Kind : AuditableEntity
+    public class Kind : BaseEntity
     {
         public string Name { get; set; }
         public string Icon { get; set; }

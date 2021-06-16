@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace micro_api.Domain.Common
 {
-    public abstract class AuditableEntity : IAuditableEntity, IHasDomainEvent
+    public abstract class BaseEntity : IBaseEntity, IHasDomainEvent
     {
         public int Id { get; set; }
 

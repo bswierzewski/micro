@@ -2,7 +2,7 @@ using micro_api.Domain.Common;
 
 namespace micro_api.Domain.Entities
 {
-    public class VersionData : AuditableEntity
+    public class VersionData : BaseEntity
     {
         public string Name { get; set; }
         public string Extension { get; set; }

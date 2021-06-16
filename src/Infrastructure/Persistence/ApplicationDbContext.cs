@@ -44,7 +44,7 @@ namespace micro_api.Infrastructure.Persistence
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
-            foreach (var entry in ChangeTracker.Entries<IAuditableEntity>())
+            foreach (var entry in ChangeTracker.Entries<IBaseEntity>())
             {
                 switch (entry.State)
                 {

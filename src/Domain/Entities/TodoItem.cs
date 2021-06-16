@@ -5,7 +5,7 @@ using System;
 
 namespace micro_api.Domain.Entities
 {
-    public class TodoItem : AuditableEntity
+    public class TodoItem : BaseEntity
     {
 
         public TodoList List { get; set; }

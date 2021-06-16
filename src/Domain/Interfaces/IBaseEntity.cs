@@ -2,7 +2,7 @@
 
 namespace micro_api.Domain.Interfaces
 {
-    public interface IAuditableEntity
+    public interface IBaseEntity
     {
         int Id { get; set; }
 

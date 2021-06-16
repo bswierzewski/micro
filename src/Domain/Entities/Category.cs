@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace micro_api.Domain.Entities
 {
-    public class Category : AuditableEntity
+    public class Category : BaseEntity
     {
         public string Name { get; set; }
         public string Icon { get; set; }

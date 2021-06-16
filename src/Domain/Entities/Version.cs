@@ -2,7 +2,7 @@ using micro_api.Domain.Common;
 
 namespace micro_api.Domain.Entities
 {
-    public class Version : AuditableEntity
+    public class Version : BaseEntity
     {
         public string Name { get; set; }
         public short Major { get; set; }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace micro_api.Domain.Entities
 {
-    public class TodoList : AuditableEntity
+    public class TodoList : BaseEntity
     {
         public string Title { get; set; }
 

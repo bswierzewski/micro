@@ -3,7 +3,7 @@ using micro_api.Domain.Enums;
 
 namespace micro_api.Domain.Entities
 {
-    public class Label : AuditableEntity
+    public class Label : BaseEntity
     {
         public string Name { get; set; }
         public LabelType LabelType { get; set; } = LabelType.Mac;
