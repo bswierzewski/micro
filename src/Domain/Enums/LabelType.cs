@@ -2,7 +2,7 @@
 
 namespace micro_api.Domain.Enums
 {
-    public enum AddressType
+    public enum LabelType
     {
         [EnumMember(Value = "Mac")]
         Mac = 1,

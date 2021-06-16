@@ -8,7 +8,7 @@ namespace micro_api.Domain.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public AddressType AddressType { get; set; } = AddressType.Mac;
+        public LabelType LabelType { get; set; } = LabelType.Mac;
         public bool IsConfirmed { get; set; }
 
         public List<DomainEvent> DomainEvents { get; set; } = new List<DomainEvent>();

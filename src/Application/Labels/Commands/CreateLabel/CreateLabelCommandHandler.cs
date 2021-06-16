@@ -21,7 +21,7 @@ namespace micro_api.Application.Labels.Commands.CreateLabel
             var entity = new Label
             {
                 Name = request.Name,
-                AddressType = request.LabelType
+                LabelType = request.LabelType
             };
 
             entity.DomainEvents.Add(new LabelCreatedEvent(entity));
