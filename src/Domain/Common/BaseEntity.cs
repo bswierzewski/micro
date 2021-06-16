@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace micro_api.Domain.Common
 {
-    public abstract class BaseEntity
+    public abstract class BaseEntity : IHasDomainEvent
     {
         public int Id { get; set; }
 
@@ -13,5 +15,8 @@ namespace micro_api.Domain.Common
         public DateTime? LastModified { get; set; }
 
         public string LastModifiedBy { get; set; }
+
+        [NotMapped]
+        public List<DomainEvent> DomainEvents { get; set; } = new List<DomainEvent>();
     }
 }

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace micro_api.Domain.Entities
 {
-    public class TodoItem : BaseEntity, IHasDomainEvent
+    public class TodoItem : BaseEntity
     {
 
         public TodoList List { get; set; }
@@ -35,7 +35,5 @@ namespace micro_api.Domain.Entities
                 _done = value;
             }
         }
-
-        public List<DomainEvent> DomainEvents { get; set; } = new List<DomainEvent>();
     }
 }

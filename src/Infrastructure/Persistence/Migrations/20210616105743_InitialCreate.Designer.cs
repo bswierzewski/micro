@@ -9,7 +9,7 @@ using micro_api.Infrastructure.Persistence;
 namespace micro_api.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210616093205_InitialCreate")]
+    [Migration("20210616105743_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
