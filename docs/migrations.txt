@@ -1,0 +1,1 @@
+dotnet ef migrations add "Label unique index" --project src/Infrastructure --startup-project src/WebUI --output-dir Persistence/Migrations
