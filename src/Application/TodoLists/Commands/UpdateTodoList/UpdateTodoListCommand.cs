@@ -16,16 +16,16 @@ namespace micro_api.Application.TodoLists.Commands.UpdateTodoList
 
     public class UpdateTodoListCommandHandler : IRequestHandler<UpdateTodoListCommand>
     {
-        private readonly IApplicationDbContext _context;
+        private readonly IUnitOfWork _uow;
 
-        public UpdateTodoListCommandHandler(IApplicationDbContext context)
+        public UpdateTodoListCommandHandler(IUnitOfWork uow)
         {
-            _context = context;
+            _uow = uow;
         }
 
         public async Task<Unit> Handle(UpdateTodoListCommand request, CancellationToken cancellationToken)
         {
-            var entity = await _context.TodoLists.FindAsync(request.Id);
+            var entity = await _uow.Repository<TodoList>().GetByIdAsync(request.Id);
 
             if (entity == null)
             {
@@ -34,7 +34,7 @@ namespace micro_api.Application.TodoLists.Commands.UpdateTodoList
 
             entity.Title = request.Title;
 
-            await _context.SaveChangesAsync(cancellationToken);
+            await _uow.Complete();
 
             return Unit.Value;
         }

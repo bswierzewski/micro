@@ -9,11 +9,11 @@ namespace micro_api.Application.Labels.Commands.CreateLabel
 {
     class CreateLabelCommandHandler : IRequestHandler<CreateLabelCommand>
     {
-        private readonly IApplicationDbContext _context;
+        private readonly IUnitOfWork _uow;
 
-        public CreateLabelCommandHandler(IApplicationDbContext context)
+        public CreateLabelCommandHandler(IUnitOfWork uow)
         {
-            _context = context;
+            _uow = uow;
         }
 
         public async Task<Unit> Handle(CreateLabelCommand request, CancellationToken cancellationToken)
@@ -26,9 +26,9 @@ namespace micro_api.Application.Labels.Commands.CreateLabel
 
             entity.DomainEvents.Add(new LabelCreatedEvent(entity));
 
-            _context.Labels.Add(entity);
+            await _uow.Repository<Label>().AddAsync(entity);
 
-            await _context.SaveChangesAsync(cancellationToken);
+            await _uow.Complete();
 
             return Unit.Value;
         }

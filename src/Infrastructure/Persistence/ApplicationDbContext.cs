@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace micro_api.Infrastructure.Persistence
 {
-    public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>, IApplicationDbContext
+    public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>
     {
         private readonly ICurrentUserService _currentUserService;
         private readonly IDateTime _dateTime;

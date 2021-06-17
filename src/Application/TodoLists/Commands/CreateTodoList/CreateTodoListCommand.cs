@@ -13,11 +13,11 @@ namespace micro_api.Application.TodoLists.Commands.CreateTodoList
 
     public class CreateTodoListCommandHandler : IRequestHandler<CreateTodoListCommand, int>
     {
-        private readonly IApplicationDbContext _context;
+        private readonly IUnitOfWork _uow;
 
-        public CreateTodoListCommandHandler(IApplicationDbContext context)
+        public CreateTodoListCommandHandler(IUnitOfWork uow)
         {
-            _context = context;
+            _uow = uow;
         }
 
         public async Task<int> Handle(CreateTodoListCommand request, CancellationToken cancellationToken)
@@ -26,9 +26,9 @@ namespace micro_api.Application.TodoLists.Commands.CreateTodoList
 
             entity.Title = request.Title;
 
-            _context.TodoLists.Add(entity);
+            await _uow.Repository<TodoList>().AddAsync(entity);
 
-            await _context.SaveChangesAsync(cancellationToken);
+            await _uow.Complete();
 
             return entity.Id;
         }

@@ -16,11 +16,11 @@ namespace micro_api.Application.TodoItems.Commands.CreateTodoItem
 
     public class CreateTodoItemCommandHandler : IRequestHandler<CreateTodoItemCommand, int>
     {
-        private readonly IApplicationDbContext _context;
+        private readonly IUnitOfWork _uow;
 
-        public CreateTodoItemCommandHandler(IApplicationDbContext context)
+        public CreateTodoItemCommandHandler(IUnitOfWork uow)
         {
-            _context = context;
+            _uow = uow;
         }
 
         public async Task<int> Handle(CreateTodoItemCommand request, CancellationToken cancellationToken)
@@ -34,9 +34,9 @@ namespace micro_api.Application.TodoItems.Commands.CreateTodoItem
 
             entity.DomainEvents.Add(new TodoItemCreatedEvent(entity));
 
-            _context.TodoItems.Add(entity);
+            await _uow.Repository<TodoItem>().AddAsync(entity);
 
-            await _context.SaveChangesAsync(cancellationToken);
+            await _uow.Complete();
 
             return entity.Id;
         }

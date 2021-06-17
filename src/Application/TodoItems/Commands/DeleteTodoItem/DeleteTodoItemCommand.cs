@@ -14,25 +14,25 @@ namespace micro_api.Application.TodoItems.Commands.DeleteTodoItem
 
     public class DeleteTodoItemCommandHandler : IRequestHandler<DeleteTodoItemCommand>
     {
-        private readonly IApplicationDbContext _context;
+        private readonly IUnitOfWork _uow;
 
-        public DeleteTodoItemCommandHandler(IApplicationDbContext context)
+        public DeleteTodoItemCommandHandler(IUnitOfWork context)
         {
-            _context = context;
+            _uow = context;
         }
 
         public async Task<Unit> Handle(DeleteTodoItemCommand request, CancellationToken cancellationToken)
         {
-            var entity = await _context.TodoItems.FindAsync(request.Id);
+            var entity = await _uow.Repository<TodoItem>().GetByIdAsync(request.Id);
 
             if (entity == null)
             {
                 throw new NotFoundException(nameof(TodoItem), request.Id);
             }
 
-            _context.TodoItems.Remove(entity);
+            _uow.Repository<TodoItem>().Remove(entity);
 
-            await _context.SaveChangesAsync(cancellationToken);
+            await _uow.Complete();
 
             return Unit.Value;
         }

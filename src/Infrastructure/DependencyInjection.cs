@@ -1,6 +1,7 @@
 ﻿using micro_api.Application.Common.Interfaces;
 using micro_api.Infrastructure.Files;
 using micro_api.Infrastructure.Identity;
+using micro_api.Infrastructure.Persistance;
 using micro_api.Infrastructure.Persistence;
 using micro_api.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication;
@@ -28,7 +29,8 @@ namespace micro_api.Infrastructure
                         b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
             }
 
-            services.AddScoped<IApplicationDbContext>(provider => provider.GetService<ApplicationDbContext>());
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped(typeof(IRepository<>), (typeof(Repository<>)));
 
             services.AddScoped<IDomainEventService, DomainEventService>();
 

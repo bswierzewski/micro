@@ -1,12 +1,6 @@
 ﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
-using micro_api.Application.Common.Interfaces;
-using micro_api.Application.Common.Security;
-using micro_api.Domain.Enums;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Linq;
+using micro_api.Application.Common.Interfaces;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -18,30 +12,18 @@ namespace micro_api.Application.TodoLists.Queries.GetTodos
 
     public class GetTodosQueryHandler : IRequestHandler<GetTodosQuery, TodosVm>
     {
-        private readonly IApplicationDbContext _context;
+        private readonly IUnitOfWork _uow;
         private readonly IMapper _mapper;
 
-        public GetTodosQueryHandler(IApplicationDbContext context, IMapper mapper)
+        public GetTodosQueryHandler(IUnitOfWork uow, IMapper mapper)
         {
-            _context = context;
+            _uow = uow;
             _mapper = mapper;
         }
 
         public async Task<TodosVm> Handle(GetTodosQuery request, CancellationToken cancellationToken)
         {
-            return new TodosVm
-            {
-                PriorityLevels = Enum.GetValues(typeof(PriorityLevel))
-                    .Cast<PriorityLevel>()
-                    .Select(p => new PriorityLevelDto { Value = (int)p, Name = p.ToString() })
-                    .ToList(),
-
-                Lists = await _context.TodoLists
-                    .AsNoTracking()
-                    .ProjectTo<TodoListDto>(_mapper.ConfigurationProvider)
-                    .OrderBy(t => t.Title)
-                    .ToListAsync(cancellationToken)
-            };
+            return null;
         }
     }
 }
