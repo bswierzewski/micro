@@ -18,4 +18,26 @@
     <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Categories\Commands\" />
+    <Folder Include="Categories\EventHandlers\" />
+    <Folder Include="Categories\Queries\" />
+    <Folder Include="Components\Commands\" />
+    <Folder Include="Components\EventHandlers\" />
+    <Folder Include="Components\Queries\" />
+    <Folder Include="Devices\Commands\" />
+    <Folder Include="Devices\EventHandlers\" />
+    <Folder Include="Devices\Queries\" />
+    <Folder Include="Kinds\Commands\" />
+    <Folder Include="Kinds\EventHandlers\" />
+    <Folder Include="Kinds\Queries\" />
+    <Folder Include="Labels\Queries\" />
+    <Folder Include="VersionsData\Commands\" />
+    <Folder Include="VersionsData\EventHandlers\" />
+    <Folder Include="VersionsData\Queries\" />
+    <Folder Include="Versions\Commands\" />
+    <Folder Include="Versions\EventHandlers\" />
+    <Folder Include="Versions\Queries\" />
+  </ItemGroup>
+
 </Project>
