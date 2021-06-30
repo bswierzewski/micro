@@ -1,7 +1,6 @@
-﻿using MediatR;
-using micro_api.Application.Common.Interfaces;
+﻿using micro_api.Application.Common.Interfaces;
 using micro_api.Application.Common.Security;
-using micro_api.Domain.Entities;
+using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -15,18 +14,18 @@ namespace micro_api.Application.TodoLists.Commands.PurgeTodoLists
 
     public class PurgeTodoListsCommandHandler : IRequestHandler<PurgeTodoListsCommand>
     {
-        private readonly IUnitOfWork _uow;
+        private readonly IApplicationDbContext _context;
 
-        public PurgeTodoListsCommandHandler(IUnitOfWork uow)
+        public PurgeTodoListsCommandHandler(IApplicationDbContext context)
         {
-            _uow = uow;
+            _context = context;
         }
 
         public async Task<Unit> Handle(PurgeTodoListsCommand request, CancellationToken cancellationToken)
         {
-            _uow.Repository<TodoList>().RemoveRange(await _uow.Repository<TodoList>().GetAllAsync());
+            _context.TodoLists.RemoveRange(_context.TodoLists);
 
-            await _uow.Complete();
+            await _context.SaveChangesAsync(cancellationToken);
 
             return Unit.Value;
         }

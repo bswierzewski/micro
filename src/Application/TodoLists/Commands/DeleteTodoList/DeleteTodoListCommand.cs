@@ -16,25 +16,27 @@ namespace micro_api.Application.TodoLists.Commands.DeleteTodoList
 
     public class DeleteTodoListCommandHandler : IRequestHandler<DeleteTodoListCommand>
     {
-        private readonly IUnitOfWork _uow;
+        private readonly IApplicationDbContext _context;
 
-        public DeleteTodoListCommandHandler(IUnitOfWork uow)
+        public DeleteTodoListCommandHandler(IApplicationDbContext context)
         {
-            _uow = uow;
+            _context = context;
         }
 
         public async Task<Unit> Handle(DeleteTodoListCommand request, CancellationToken cancellationToken)
         {
-            var entity = await _uow.Repository<TodoList>().GetByIdAsync(request.Id);
+            var entity = await _context.TodoLists
+                .Where(l => l.Id == request.Id)
+                .SingleOrDefaultAsync(cancellationToken);
 
             if (entity == null)
             {
                 throw new NotFoundException(nameof(TodoList), request.Id);
             }
 
-            _uow.Repository<TodoList>().Remove(entity);
+            _context.TodoLists.Remove(entity);
 
-            await _uow.Complete();
+            await _context.SaveChangesAsync(cancellationToken);
 
             return Unit.Value;
         }

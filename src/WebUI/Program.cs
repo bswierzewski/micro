@@ -25,7 +25,7 @@ namespace micro_api.WebUI
                 {
                     var context = services.GetRequiredService<ApplicationDbContext>();
 
-                    if (context.Database.IsSqlServer() || context.Database.IsSqlite())
+                    if (context.Database.IsSqlite())
                     {
                         context.Database.Migrate();
                     }

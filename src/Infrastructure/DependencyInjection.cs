@@ -18,18 +18,17 @@ namespace micro_api.Infrastructure
             if (configuration.GetValue<bool>("UseInMemoryDatabase"))
             {
                 services.AddDbContext<ApplicationDbContext>(options =>
-                    options.UseInMemoryDatabase("micro_api"));
+                    options.UseInMemoryDatabase("micro_apiDb"));
             }
             else
             {
                 services.AddDbContext<ApplicationDbContext>(options =>
                     options.UseSqlite(
-                        configuration.GetConnectionString("DefaultConnection"),
+                        configuration.GetConnectionString("SQLiteConnection"),
                         b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
             }
 
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddScoped(typeof(IRepository<>), (typeof(Repository<>)));
+            services.AddScoped<IApplicationDbContext>(provider => provider.GetService<ApplicationDbContext>());
 
             services.AddScoped<IDomainEventService, DomainEventService>();
 

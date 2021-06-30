@@ -21,16 +21,16 @@ namespace micro_api.Application.TodoItems.Commands.UpdateTodoItemDetail
 
     public class UpdateTodoItemDetailCommandHandler : IRequestHandler<UpdateTodoItemDetailCommand>
     {
-        private readonly IUnitOfWork _uow;
+        private readonly IApplicationDbContext _context;
 
-        public UpdateTodoItemDetailCommandHandler(IUnitOfWork uow)
+        public UpdateTodoItemDetailCommandHandler(IApplicationDbContext context)
         {
-            _uow = uow;
+            _context = context;
         }
 
         public async Task<Unit> Handle(UpdateTodoItemDetailCommand request, CancellationToken cancellationToken)
         {
-            var entity = await _uow.Repository<TodoItem>().GetByIdAsync(request.Id);
+            var entity = await _context.TodoItems.FindAsync(request.Id);
 
             if (entity == null)
             {
@@ -41,7 +41,7 @@ namespace micro_api.Application.TodoItems.Commands.UpdateTodoItemDetail
             entity.Priority = request.Priority;
             entity.Note = request.Note;
 
-            await _uow.Complete();
+            await _context.SaveChangesAsync(cancellationToken);
 
             return Unit.Value;
         }

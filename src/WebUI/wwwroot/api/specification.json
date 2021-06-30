@@ -6,6 +6,39 @@
     "version": "1.0.0"
   },
   "paths": {
+    "/api/Labels": {
+      "post": {
+        "tags": [
+          "Labels"
+        ],
+        "operationId": "Labels_Create",
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateLabelCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/TodoItems": {
       "get": {
         "tags": [
@@ -440,6 +473,31 @@
   },
   "components": {
     "schemas": {
+      "CreateLabelCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "labelType": {
+            "$ref": "#/components/schemas/LabelType"
+          }
+        }
+      },
+      "LabelType": {
+        "type": "integer",
+        "description": "",
+        "x-enumNames": [
+          "Mac",
+          "Ble"
+        ],
+        "enum": [
+          1,
+          2
+        ]
+      },
       "PaginatedListOfTodoItemDto": {
         "type": "object",
         "additionalProperties": false,

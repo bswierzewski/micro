@@ -1,7 +1,6 @@
-﻿using FluentValidation;
-using micro_api.Application.Common.Interfaces;
-using micro_api.Domain.Entities;
-using System.Linq;
+﻿using micro_api.Application.Common.Interfaces;
+using FluentValidation;
+using Microsoft.EntityFrameworkCore;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -9,11 +8,11 @@ namespace micro_api.Application.TodoLists.Commands.CreateTodoList
 {
     public class CreateTodoListCommandValidator : AbstractValidator<CreateTodoListCommand>
     {
-        private readonly IUnitOfWork _uow;
+        private readonly IApplicationDbContext _context;
 
-        public CreateTodoListCommandValidator(IUnitOfWork uow)
+        public CreateTodoListCommandValidator(IApplicationDbContext context)
         {
-            _uow = uow;
+            _context = context;
 
             RuleFor(v => v.Title)
                 .NotEmpty().WithMessage("Title is required.")
@@ -23,9 +22,8 @@ namespace micro_api.Application.TodoLists.Commands.CreateTodoList
 
         public async Task<bool> BeUniqueTitle(string title, CancellationToken cancellationToken)
         {
-            var result = await _uow.Repository<TodoList>().FindAsync(l => l.Title != title);
-
-            return result.Any();
+            return await _context.TodoLists
+                .AllAsync(l => l.Title != title);
         }
     }
 }

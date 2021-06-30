@@ -1,8 +1,11 @@
 ﻿using AutoMapper;
-using MediatR;
+using AutoMapper.QueryableExtensions;
 using micro_api.Application.Common.Interfaces;
+using micro_api.Application.Common.Mappings;
 using micro_api.Application.Common.Models;
 using micro_api.Application.TodoLists.Queries.GetTodos;
+using MediatR;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -17,18 +20,22 @@ namespace micro_api.Application.TodoItems.Queries.GetTodoItemsWithPagination
 
     public class GetTodoItemsWithPaginationQueryHandler : IRequestHandler<GetTodoItemsWithPaginationQuery, PaginatedList<TodoItemDto>>
     {
-        private readonly IUnitOfWork _uow;
+        private readonly IApplicationDbContext _context;
         private readonly IMapper _mapper;
 
-        public GetTodoItemsWithPaginationQueryHandler(IUnitOfWork uow, IMapper mapper)
+        public GetTodoItemsWithPaginationQueryHandler(IApplicationDbContext context, IMapper mapper)
         {
-            _uow = uow;
+            _context = context;
             _mapper = mapper;
         }
 
         public async Task<PaginatedList<TodoItemDto>> Handle(GetTodoItemsWithPaginationQuery request, CancellationToken cancellationToken)
         {
-            return null;
+            return await _context.TodoItems
+                .Where(x => x.ListId == request.ListId)
+                .OrderBy(x => x.Title)
+                .ProjectTo<TodoItemDto>(_mapper.ConfigurationProvider)
+                .PaginatedListAsync(request.PageNumber, request.PageSize); ;
         }
     }
 }

@@ -2,13 +2,11 @@
 using micro_api.Domain.Enums;
 using micro_api.Domain.Events;
 using System;
-using System.Collections.Generic;
 
 namespace micro_api.Domain.Entities
 {
     public class TodoItem : BaseEntity
     {
-
         public TodoList List { get; set; }
 
         public int ListId { get; set; }

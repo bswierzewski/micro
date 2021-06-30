@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace micro_api.Infrastructure.Persistence.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class Initialcreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -107,7 +107,7 @@ namespace micro_api.Infrastructure.Persistence.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", nullable: true),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
                     LabelType = table.Column<int>(type: "INTEGER", nullable: false),
                     IsConfirmed = table.Column<bool>(type: "INTEGER", nullable: false),
                     Created = table.Column<DateTime>(type: "TEXT", nullable: false),
@@ -498,6 +498,12 @@ namespace micro_api.Infrastructure.Persistence.Migrations
                 name: "IX_Devices_VersionId",
                 table: "Devices",
                 column: "VersionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Labels_Name",
+                table: "Labels",
+                column: "Name",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_PersistedGrants_Expiration",

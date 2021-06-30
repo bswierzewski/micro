@@ -16,13 +16,13 @@ namespace micro_api.Application.TodoLists.Queries.ExportTodos
 
     public class ExportTodosQueryHandler : IRequestHandler<ExportTodosQuery, ExportTodosVm>
     {
-        private readonly IUnitOfWork _uow;
+        private readonly IApplicationDbContext _context;
         private readonly IMapper _mapper;
         private readonly ICsvFileBuilder _fileBuilder;
 
-        public ExportTodosQueryHandler(IUnitOfWork uow, IMapper mapper, ICsvFileBuilder fileBuilder)
+        public ExportTodosQueryHandler(IApplicationDbContext context, IMapper mapper, ICsvFileBuilder fileBuilder)
         {
-            _uow = uow;
+            _context = context;
             _mapper = mapper;
             _fileBuilder = fileBuilder;
         }
@@ -30,6 +30,15 @@ namespace micro_api.Application.TodoLists.Queries.ExportTodos
         public async Task<ExportTodosVm> Handle(ExportTodosQuery request, CancellationToken cancellationToken)
         {
             var vm = new ExportTodosVm();
+
+            var records = await _context.TodoItems
+                    .Where(t => t.ListId == request.ListId)
+                    .ProjectTo<TodoItemRecord>(_mapper.ConfigurationProvider)
+                    .ToListAsync(cancellationToken);
+
+            vm.Content = _fileBuilder.BuildTodoItemsFile(records);
+            vm.ContentType = "text/csv";
+            vm.FileName = "TodoItems.csv";
 
             return await Task.FromResult(vm);
         }

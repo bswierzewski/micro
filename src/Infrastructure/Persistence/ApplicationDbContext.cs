@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace micro_api.Infrastructure.Persistence
 {
-    public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>
+    public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>, IApplicationDbContext
     {
         private readonly ICurrentUserService _currentUserService;
         private readonly IDateTime _dateTime;
@@ -31,8 +31,6 @@ namespace micro_api.Infrastructure.Persistence
             _dateTime = dateTime;
         }
 
-        public DbSet<TodoItem> TodoItems { get; set; }
-        public DbSet<TodoList> TodoLists { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Component> Components { get; set; }
         public DbSet<Device> Devices { get; set; }
@@ -40,6 +38,8 @@ namespace micro_api.Infrastructure.Persistence
         public DbSet<Label> Labels { get; set; }
         public DbSet<Version> Versions { get; set; }
         public DbSet<VersionData> VersionsData { get; set; }
+        public DbSet<TodoItem> TodoItems { get; set; }
+        public DbSet<TodoList> TodoLists { get; set; }
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
